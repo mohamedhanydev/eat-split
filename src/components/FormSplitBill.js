@@ -28,6 +28,9 @@ export default function FormSplitBill({
       })
     );
     onSelected(null);
+    setWillPay("user");
+    setBill("");
+    setMyExpense("");
   }
 
   return selected ? (
@@ -42,17 +45,13 @@ export default function FormSplitBill({
       />
       <label>🧍‍♀️ Your expense</label>
       <input
-        type="text"
+        type="number"
         value={myExpense}
-        required
         onChange={(e) => setMyExpense(+e.target.value)}
+        max={bill}
       />
       <label>👫 {selectedFriend.name}'s expense</label>
-      <input
-        type="text"
-        disabled
-        value={bill && myExpense ? bill - myExpense : ""}
-      />
+      <input type="text" disabled value={!bill ? "" : bill - myExpense} />
       <label>🤑 Who is paying the bill</label>
       <select value={willPay} onChange={(e) => setWillPay(e.target.value)}>
         <option value="user">You</option>
