@@ -167,3 +167,20 @@ form h2 {
   letter-spacing: -0.5px;
   margin-bottom: 1.6rem;
 }
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    width: 80%;
+  }
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .app {
+    width: 100%;
+  }
+  html {
+    font-size: 45%;
+  }
+}
