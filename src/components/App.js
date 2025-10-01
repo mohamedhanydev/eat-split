@@ -30,7 +30,12 @@ export default function App() {
 
   return (
     <div className="app">
-      <Friends friends={friends} selected={selected} onSelected={setSelected} />
+      <Friends
+        onFriends={setFriends}
+        friends={friends}
+        selected={selected}
+        onSelected={setSelected}
+      />
     </div>
   );
 }
