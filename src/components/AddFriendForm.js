@@ -11,6 +11,7 @@ export default function AddFriendForm({ onFriends, friends }) {
     e.preventDefault();
     const toAddFriend = {
       id: Date.now(),
+      isSelected: false,
       ...newFriend,
     };
     onFriends([...friends, toAddFriend]);

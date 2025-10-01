@@ -4,7 +4,10 @@ export default function Friend({ data, selected, onSelected }) {
     <li className={selected === data.id ? "selected" : ""}>
       <img src={data.image} alt={data.name} />
       <h3>{data.name}</h3>
-      <p>You and {data.name} are even</p>
+      <p>{!data.balance ? `You and ${data.name} are even`: 
+      data.balance > 0 ? `You owe ${data.name} ${data.balance}€
+
+` : }</p>
       <Button
         onClick={() => {
           if (selected === data.id) {

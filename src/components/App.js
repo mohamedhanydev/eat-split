@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Friends from "./Friends";
-
+import FormSplitBill from "./FormSplitBill.js";
 const initialFriends = [
   {
     id: 118836,
@@ -34,6 +34,12 @@ export default function App() {
         onFriends={setFriends}
         friends={friends}
         selected={selected}
+        onSelected={setSelected}
+      />
+      <FormSplitBill
+        selected={selected}
+        friends={friends}
+        onFriends={setFriends}
         onSelected={setSelected}
       />
     </div>
