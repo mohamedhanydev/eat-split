@@ -35,10 +35,10 @@ export default function FormSplitBill({
 
   return selected ? (
     <form className="form-split-bill" onSubmit={handleSplitBill}>
-      <h2>Split a bill with Clark</h2>
+      <h2>Split a bill with {selectedFriend.name}</h2>
       <label>💰 Bill value</label>
       <input
-        type="text"
+        type="number"
         value={bill}
         required
         onChange={(e) => setBill(+e.target.value)}
