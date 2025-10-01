@@ -10,6 +10,7 @@ export default function FormSplitBill({
   const [myExpense, setMyExpense] = useState("");
   const [willPay, setWillPay] = useState("user");
   if (!selected) return null;
+  const selectedFriend = friends.find((cur) => cur.id === selected);
   function handleSplitBill() {
     const amount = bill - myExpense;
     onFriends(
@@ -17,9 +18,10 @@ export default function FormSplitBill({
         if (friend.id === selected) {
           return {
             ...friend,
-            balance: willPay
-              ? friend.balance - amount
-              : friend.balance + amount,
+            balance:
+              willPay === "user"
+                ? friend.balance - amount
+                : friend.balance + amount,
           };
         }
         return friend;
@@ -29,18 +31,20 @@ export default function FormSplitBill({
   }
 
   return selected ? (
-    <form className="form-split-bill">
+    <form className="form-split-bill" onSubmit={handleSplitBill}>
       <h2>Split a bill with Clark</h2>
       <label>💰 Bill value</label>
       <input
         type="text"
         value={bill}
+        required
         onChange={(e) => setBill(+e.target.value)}
       />
       <label>🧍‍♀️ Your expense</label>
       <input
         type="text"
         value={myExpense}
+        required
         onChange={(e) => setMyExpense(+e.target.value)}
       />
       <label>👫 {selectedFriend.name}'s expense</label>
@@ -54,7 +58,7 @@ export default function FormSplitBill({
         <option value="user">You</option>
         <option value="friend">{selectedFriend.name}</option>
       </select>
-      <Button onClick={handleSplitBill}>Split bill</Button>
+      <Button>Split bill</Button>
     </form>
   ) : null;
 }

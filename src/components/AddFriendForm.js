@@ -5,7 +5,7 @@ export default function AddFriendForm({ onFriends, friends }) {
   const [addFriend, setAddFriend] = useState(false);
   const [newFriend, setNewFriend] = useState({
     name: "",
-    url: "https://i.pravatar.cc/48",
+    image: "https://i.pravatar.cc/48?u=499476",
   });
   function handleOnFriends(e) {
     e.preventDefault();
@@ -34,8 +34,10 @@ export default function AddFriendForm({ onFriends, friends }) {
         <input
           type="text"
           id="image-url"
-          value={newFriend.url}
-          onChange={(e) => setNewFriend({ ...newFriend, url: e.target.value })}
+          value={newFriend.image}
+          onChange={(e) =>
+            setNewFriend({ ...newFriend, image: e.target.value })
+          }
         />
         <Button>Add New Friend</Button>
       </form>
